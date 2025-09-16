@@ -1,0 +1,229 @@
+/* index.css */
+
+/* @import "tailwindcss"; */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* Define variables for light and dark themes */
+:root {
+  --bg-main: #f0f4ff;
+  --bg-card: #ffffff;
+  --text-main: #1a202c;
+  --text-secondary: #4a5568;
+  --accent: #805ad5;
+  --code-bg: #f7fafc;
+}
+
+.dark {
+  --bg-main: #1a202c;
+  --bg-card: #2d3748;
+  --text-main: #e2e8f0;
+  --text-secondary: #cbd5e0;
+  --accent: #4fd1c5;
+  --code-bg: #1e293b;
+}
+
+/* Apply variables to common elements */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+   
+}
+
+.card, .classhead, .magiccode, .steps {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.code-box {
+  background-color: var(--code-bg);
+  color: var(--accent);
+}
+
+/* Optional: Override Tailwind's html.dark if not using Tailwind dark: classes */
+html {
+  scroll-behavior: smooth;
+  /* background-color: black;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+  color: var(--text-main);
+}
+
+.dark {
+  --bg-main: #1a202c;
+  --text-main: #e2e8f0;
+  /* ... */
+}
+
+/* tailwind override */
+.bg-main {
+  background-color: var(--bg-main);
+}
+.text-main {
+  color: var(--text-main);
+}
+
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.95;
+  }
+}
+
+.animate-breathe {
+  animation: breathe 2.5s ease-in-out infinite;
+}
+
+
+@keyframes breathe-glow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  }
+}
+
+.animate-breathe-glow {
+  animation: breathe-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
+  }
+}
+
+.animate-ripple {
+  animation: ripple 2s infinite;
+}
+
+@keyframes color-flash {
+  0%   { color: #ffffff; }
+  25%  { color: #ff4c4c; }
+  50%  { color: #00ffcc; }
+  75%  { color: #ffcc00; }
+  100% { color: #ffffff; }
+}
+
+.text-flash {
+  animation: color-flash 2s infinite;
+}
+
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.animate-jump {
+  animation: jump 1.8s ease-in-out infinite;
+}
+
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.3);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.3);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+
+@keyframes radiantPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(0, 255, 164, 0.3);
+  }
+  50% {
+    transform: scale(1.07);
+    box-shadow: 0 0 20px rgba(0, 255, 164, 0.6), 0 0 30px rgba(0, 255, 255, 0.3);
+  }
+}
+
+@keyframes shimmerSwipe {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-radiant {
+  animation: radiantPulse 2.5s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-radiant::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 300%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmerSwipe 3s linear infinite;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px #ffd700, 0 0 10px #ff69b4;
+  }
+  50% {
+    box-shadow: 0 0 15px #ffd700, 0 0 25px #ff69b4;
+  }
+  100% {
+    box-shadow: 0 0 5px #ffd700, 0 0 10px #ff69b4;
+  }
+}
+
+.animate-glow {
+  animation: glow 2s infinite;
+}
+
+.drop-shadow-glow {
+  filter: drop-shadow(0 0 6px #ffd700);
+}

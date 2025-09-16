@@ -1,0 +1,1404 @@
+/* Theme Variables */
+.app-container.dark {
+  --bg-color: #1e1e1e;
+  --text-color: #f0f0f0;
+  --header-bg: #252526;
+  --editor-bg: #1e1e1e;
+  --terminal-bg: #1e1e1e;
+  --border-color: #444;
+  --btn-bg: #3a3a3a;
+  --btn-hover: #4a4a4a;
+  --btn-primary-bg: #0066cc;
+  --btn-primary-hover: #0088ff;
+  --select-bg: #3a3a3a;
+  --select-text: #f0f0f0;
+  --progress-bg: #0066cc;
+  --output-bg: #1e1e1e;
+  --status-success: #4CAF50;
+  --status-error: #F44336;
+  --status-processing: #2196F3;
+  --status-ready: #9E9E9E;
+  --terminal-prompt-color: #00ff00;
+}
+
+.app-container.light {
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --header-bg: #f0f0f0;
+  --editor-bg: #ffffff;
+  --terminal-bg: #ffffff;
+  --border-color: #ddd;
+  --btn-bg: #e0e0e0;
+  --btn-hover: #d0d0d0;
+  --btn-primary-bg: #1976D2;
+  --btn-primary-hover: #2196F3;
+  --select-bg: #ffffff;
+  --select-text: #333;
+  --progress-bg: #1976D2;
+  --output-bg: #ffffff;
+  --status-success: #4CAF50;
+  --status-error: #F44336;
+  --status-processing: #2196F3;
+  --status-ready: #9E9E9E;
+  --terminal-prompt-color: #00aa00;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
+}
+
+.app-container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hide scrollbars globally */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+header {
+  background-color: var(--header-bg);
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-right: 20px;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.port-section {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.session-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 10px;
+}
+
+.port-label {
+  margin-right: 8px;
+  font-size: 0.9rem;
+}
+
+.port-selector {
+  padding: 6px 12px;
+  border-radius: 4px;
+  background-color: var(--select-bg);
+  color: var(--select-text);
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  min-width: 200px;
+}
+
+.theme-toggle {
+  margin: 0 5px;
+}
+
+.btn, .clear-btn, .theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 15px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.btn:hover, .clear-btn:hover, .theme-btn:hover {
+  background-color: var(--btn-hover);
+}
+
+.btn-primary {
+  background-color: var(--btn-primary-bg);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--btn-primary-hover);
+}
+
+.btn-primary.uploading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--btn-hover);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.editor-section {
+  height: calc(60% - 38px); 
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-content {
+  height: 100%;
+  position: relative;
+}
+
+.output-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 15px;
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.output-title {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.clear-btn {
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  background-color: var(--btn-primary-bg);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.clear-btn:hover {
+  background-color: var(--btn-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.output {
+  background-color: var(--output-bg);
+  color: var(--text-color);
+  height: 100%;
+  padding: 0;
+  margin-bottom: 50px;
+  overflow-y: auto;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+}
+
+.terminal-header {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--text-color);
+}
+
+.terminal-ready {
+  color: var(--status-ready);
+  padding-left: 10px;
+  font-size: medium;
+}
+
+.terminal-step {
+  color: var(--status-processing);
+  
+}
+
+.terminal-success {
+  color: var(--status-success);
+  padding-left: 10px;
+
+}
+
+.terminal-error {
+  color: var(--status-error);
+  padding-left: 10px;
+}
+
+.terminal-info {
+  color: var(--text-color);
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-success {
+  background-color: var(--status-success);
+}
+
+.status-error {
+  background-color: var(--status-error);
+}
+
+.status-processing {
+  background-color: var(--status-processing);
+}
+
+.status-ready {
+  background-color: var(--status-ready);
+}
+
+/* Progress Bar */
+.progress-container {
+  height: 4px;
+  background-color: transparent;
+  position: relative;
+  transition: all 0.3s;
+  opacity: 0;
+}
+
+.progress-container.visible {
+  opacity: 1;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--progress-bg);
+  transition: width 0.3s;
+}
+
+/* Port Refresh Button */
+.refresh-btn {
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.refresh-btn:hover {
+  background-color: var(--btn-hover);
+  transform: rotate(90deg);
+}
+
+.refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.test-btn {
+  background: linear-gradient(45deg, #FF9800, #F57C00);
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+}
+
+.test-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
+}
+
+/* Editor Toolbar */
+.editor-toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 8px 10px;
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  margin-right: 8px;
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.toolbar-btn:hover {
+  background-color: var(--btn-hover);
+}
+
+/* Floating Clear Button */
+.floating-clear-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 16px;
+  background-color: var(--btn-primary-bg);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 1000;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.floating-clear-btn:hover {
+  opacity: 1;
+  background-color: var(--btn-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.floating-clear-btn:active {
+  transform: translateY(0);
+}
+
+/* Make sure clear button is always visible after compilation */
+.floating-clear-btn.after-compilation {
+  opacity: 1;
+  background-color: #dc2626;
+  color: white;
+}
+
+.floating-clear-btn.after-compilation:hover {
+  background-color: #b91c1c;
+}
+
+/* Add animation to floating button */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.floating-clear-btn:hover {
+  animation: float 1.5s ease-in-out infinite;
+}
+
+/* Responsive Design for Portmap */
+@media (max-width: 768px) {
+  .portmap-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .arc-reactor {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .port-card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portmap-container {
+    padding: 1rem;
+  }
+  
+  .legend-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Enhanced Button Styles */
+.theme-toggle-btn {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.theme-toggle-btn:hover::before {
+  left: 100%;
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(251, 191, 36, 0.4);
+}
+
+/* Compiler Button Styles */
+.compiler-btn {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.compiler-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.compiler-btn:hover::before {
+  left: 100%;
+}
+
+.compiler-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+}
+
+/* Port Map Toggle Button */
+.portmap-toggle-btn {
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.portmap-toggle-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.portmap-toggle-btn:hover::before {
+  left: 100%;
+}
+
+.portmap-toggle-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+}
+
+/* Dark Mode Enhancements */
+.dark .theme-toggle-btn {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+}
+
+.dark .compiler-btn {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
+
+.dark .portmap-toggle-btn {
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+}
+
+/* Button Icon Animations */
+.btn-icon {
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle-btn:hover .btn-icon {
+  transform: rotate(180deg);
+}
+
+.compiler-btn:hover .btn-icon {
+  transform: scale(1.2);
+}
+
+.portmap-toggle-btn:hover .btn-icon {
+  transform: scale(1.1);
+}
+
+/* Hide Scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* Ensure Consistent Background During Theme Toggle */
+.min-h-screen {
+  transition: background 0.2s ease;
+}
+
+/* Prevent Background Flash on Theme Toggle */
+html {
+  transition: background-color 0.2s ease;
+}
+
+body {
+  transition: background-color 0.2s ease;
+}
+
+/* Smooth Theme Transitions for All Elements */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Ensure Gradient Backgrounds Don't Flash */
+.bg-gradient-to-br {
+  transition: background 0.2s ease;
+}
+
+/* Prevent Layout Shift During Theme Toggle */
+.app-container {
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@keyframes bounce-custom {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-custom {
+  animation: bounce-custom 1.5s infinite;
+}
+
+@keyframes zoom-custom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+}
+
+.animate-zoom-custom {
+  animation: zoom-custom 1.2s infinite;
+}
+
+.video-gradient-btn, .watch-video-btn {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Icon Styles */
+.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  transition: transform 0.2s ease;
+}
+
+.btn .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.toolbar-btn .icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Animation Classes */
+.animate-pulse {
+  animation: pulse 0.3s ease-in-out;
+}
+
+.animate-spin {
+  animation: spin 0.6s linear;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Terminal Prompt Styling */
+.terminal-prompt {
+  color: var(--terminal-prompt-color);
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+/* Run Button Special Styling */
+.run-btn {
+  background-color: var(--btn-primary-bg) !important;
+  color: white !important;
+}
+
+.run-btn:hover {
+  background-color: var(--btn-primary-hover) !important;
+}
+
+.run-btn:disabled {
+  background-color: var(--btn-bg) !important;
+  color: var(--text-color) !important;
+  opacity: 0.6;
+}
+
+/* Theme Button Icon Only */
+.theme-btn {
+  padding: 8px 12px;
+  min-width: 40px;
+}
+
+.theme-btn .icon {
+  margin-right: 0;
+}
+
+/* Refresh Button Icon Only */
+.refresh-btn {
+  padding: 8px 12px;
+  min-width: 40px;
+}
+
+.refresh-btn .icon {
+  margin-right: 0;
+}
+
+/* Resize Handle Styles */
+.resize-handle {
+  height: 6px;
+  background-color: var(--border-color);
+  cursor: ns-resize;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+.resize-handle:hover {
+  background-color: var(--btn-primary-bg);
+}
+
+.resize-handle.resizing {
+  background-color: var(--btn-primary-bg);
+}
+
+.resize-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.resize-dots {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.resize-dots span {
+  width: 4px;
+  height: 4px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.resize-handle:hover .resize-dots span,
+.resize-handle.resizing .resize-dots span {
+  opacity: 1;
+  background-color: white;
+}
+
+/* Output Controls */
+.output-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.terminal-control-btn:hover {
+  background-color: var(--btn-hover);
+  transform: translateY(-1px);
+}
+
+.terminal-control-btn .icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 0;
+}
+
+/* Update output header to accommodate controls */
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  min-height: 48px;
+}/* Resizable Terminal Styles */
+/* Add these styles to your App.css - they will override existing styles */
+
+/* Main container with divider */
+.main-container-with-divider {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px) !important; /* Correct height */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Editor section wrapper */
+.editor-section-wrapper {
+  flex: 0 0 auto;
+  overflow: hidden;
+  min-height: 200px;
+  position: relative;
+}
+
+/* Make sure your existing CodeEditor takes full height */
+.editor-section-wrapper .code-editor-container,
+.editor-section-wrapper .code-editor {
+  height: 100% ;
+}
+
+/* Horizontal draggable divider */
+.horizontal-divider {
+  height: 4px;
+  background: #30363d;
+  cursor: ns-resize;
+  position: relative;
+  flex: 0 0 4px;
+  transition: background-color 0.2s ease;
+  user-select: none;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.horizontal-divider:hover,
+.horizontal-divider.dragging {
+  background: #388bfd;
+}
+
+/* Divider grip visual */
+.divider-grip {
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  padding: 2px 0;
+}
+
+.horizontal-divider:hover .divider-grip,
+.horizontal-divider.dragging .divider-grip {
+  opacity: 1;
+}
+
+.grip-line {
+  width: 20px;
+  height: 1px;
+  background: #c9d1d9;
+  border-radius: 0.5px;
+}
+
+/* Terminal section wrapper */
+.terminal-section-wrapper {
+  flex: 0 0 auto;
+  overflow: hidden;
+  min-height: 150px;
+  position: relative;
+}
+
+/* Ensure the OutputTerminal component fills the wrapper */
+.terminal-section-wrapper .output-section {
+  height: 100% !important;
+  max-height: none !important;
+}
+
+/* Progress container positioning */
+.progress-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.progress-container.visible {
+  opacity: 1;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #1f6feb, #388bfd);
+  transition: width 0.3s ease;
+}
+
+
+
+/* Dragging state */
+.app-container.dragging {
+  user-select: none;
+}
+
+.app-container.dragging * {
+  cursor: ns-resize !important;
+}
+
+/* Dark theme adjustments */
+.dark .horizontal-divider {
+  background: #21262d;
+}
+
+.dark .horizontal-divider:hover,
+.dark .horizontal-divider.dragging {
+  background: #1f6feb;
+}
+
+
+
+/* Light theme adjustments */
+.light .horizontal-divider {
+  background: #d0d7de;
+}
+
+.light .horizontal-divider:hover,
+.light .horizontal-divider.dragging {
+  background: #0969da;
+}
+
+.light .grip-line {
+  background: #656d76;
+}
+
+
+
+/* Ensure proper scrolling in terminal */
+.terminal-section-wrapper .terminal-content {
+  height: calc(100% - 60px) !important; /* Account for terminal header */
+  overflow-y: auto !important;
+}
+
+/* Override any conflicting main styles */
+main.main-container-with-divider {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Add these CSS rules to your App.css to remove the gap */
+
+/* Remove default margins and padding from main container */
+.main-container-with-divider {
+  display: flex !important;
+  flex-direction: column !important;
+  height: calc(100vh - 60px) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  overflow: hidden;
+}
+
+/* Remove margins from editor wrapper */
+.editor-section-wrapper {
+  flex: 0 0 auto;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+/* Remove margins from your existing CodeEditor component */
+.editor-section-wrapper .code-editor-container,
+.editor-section-wrapper .code-editor,
+.editor-section-wrapper > div {
+  margin: 0 !important;
+  height: 100% !important;
+}
+
+/* Ensure divider has no margins */
+.horizontal-divider {
+  height: 4px;
+  background: #30363d;
+  cursor: ns-resize;
+  flex: 0 0 4px;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  transition: background-color 0.2s ease;
+  user-select: none;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Remove margins from terminal wrapper */
+.terminal-section-wrapper {
+  flex: 0 0 auto;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  min-height: 150px;
+}
+
+/* Remove margins from OutputTerminal component */
+.terminal-section-wrapper .output-section {
+  height: 100% !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Remove any default margins from common elements */
+.editor-section-wrapper *,
+.terminal-section-wrapper * {
+  box-sizing: border-box;
+}
+
+/* Specific overrides for common spacing issues */
+.main-container-with-divider > * {
+  margin: 0 !important;
+}
+
+.main-container-with-divider .progress-container {
+  margin: 0 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 50;
+}
+
+/* Remove any border-radius that might create visual gaps */
+.editor-section-wrapper,
+.terminal-section-wrapper,
+.horizontal-divider {
+  border-radius: 0 !important;
+}
+
+/* If you have any sections or containers with default spacing */
+section,
+.section,
+.container {
+  margin: 0 !important;
+}
+
+/* Override any flex gap properties */
+.main-container-with-divider {
+  gap: 0 !important;
+  row-gap: 0 !important;
+  column-gap: 0 !important;
+}
+
+/* Ensure the main element itself has no padding/margin */
+main.main-container-with-divider {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Remove any default styling from the app container's main element */
+.app-container main {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Additional specific overrides based on common CSS resets */
+.main-container-with-divider * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.main-container-with-divider > *:first-child {
+  margin-top: 0 !important;
+}
+
+.main-container-with-divider > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Compiler Section Gap Removal - Comprehensive Rules */
+
+/* Main compiler container - remove all gaps */
+.main-container-with-divider {
+  display: flex !important;
+  flex-direction: column !important;
+  height: calc(100vh - 60px) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  row-gap: 0 !important;
+  column-gap: 0 !important;
+  overflow: hidden;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Editor container - remove all spacing */
+.editor-container {
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+  min-height: 200px;
+  position: relative;
+}
+
+/* Ensure CodeEditor component takes full height without gaps */
+.editor-container .code-editor-container,
+.editor-container .code-editor,
+.editor-container .editor-section,
+.editor-container > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100% !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+
+/* Horizontal divider - perfect fit without gaps */
+.horizontal-divider {
+  height: 4px !important;
+  background: #30363d !important;
+  cursor: ns-resize;
+  flex: 0 0 4px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  transition: background-color 0.2s ease;
+  user-select: none;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Divider grip - perfect fit within 4px */
+.divider-grip {
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100% !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.grip-line {
+  width: 20px;
+  height: 1px;
+  background: #c9d1d9;
+  border-radius: 0.5px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Terminal container - remove all spacing */
+.terminal-container {
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+  min-height: 150px;
+  position: relative;
+}
+
+/* Ensure OutputTerminal component takes full height without gaps */
+.terminal-container .output-section,
+.terminal-container .terminal-content,
+.terminal-container > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100% !important;
+  max-height: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+
+/* Remove any default margins from all compiler elements */
+.editor-container *,
+.terminal-container *,
+.horizontal-divider * {
+  box-sizing: border-box;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Specific overrides for common spacing issues in compiler */
+.main-container-with-divider > * {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Progress container positioning in compiler */
+.main-container-with-divider .progress-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 50;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Remove any border-radius that might create visual gaps in compiler */
+.editor-container,
+.terminal-container,
+.horizontal-divider,
+.editor-container *,
+.terminal-container * {
+  border-radius: 0 !important;
+}
+
+/* Global reset for compiler sections */
+section,
+.section,
+.container,
+.editor-container,
+.terminal-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Override any flex gap properties in compiler */
+.main-container-with-divider {
+  gap: 0 !important;
+  row-gap: 0 !important;
+  column-gap: 0 !important;
+}
+
+/* Ensure the main element itself has no padding/margin in compiler */
+main.main-container-with-divider {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Remove any default styling from the app container's main element */
+.app-container main {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Additional specific overrides for compiler based on common CSS resets */
+.main-container-with-divider * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.main-container-with-divider > *:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.main-container-with-divider > *:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Compiler-specific container overrides */
+.editor-container,
+.terminal-container {
+  display: flex !important;
+  flex-direction: column !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+
+/* Ensure no gaps between compiler components */
+.editor-container + .horizontal-divider,
+.horizontal-divider + .terminal-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Compiler theme-specific divider colors */
+.dark .horizontal-divider {
+  background: #21262d !important;
+}
+
+.dark .horizontal-divider:hover,
+.dark .horizontal-divider.dragging {
+  background: #1f6feb !important;
+}
+
+.light .horizontal-divider {
+  background: #d0d7de !important;
+}
+
+.light .horizontal-divider:hover,
+.light .horizontal-divider.dragging {
+  background: #0969da !important;
+}
+
+.light .grip-line {
+  background: #656d76 !important;
+}
+
+/* Compiler resize tooltip positioning */
+.resize-tooltip {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* Ensure compiler components don't have any default browser spacing */
+.editor-container,
+.terminal-container,
+.horizontal-divider,
+.main-container-with-divider {
+  -webkit-margin-before: 0 !important;
+  -webkit-margin-after: 0 !important;
+  -webkit-margin-start: 0 !important;
+  -webkit-margin-end: 0 !important;
+  -webkit-padding-before: 0 !important;
+  -webkit-padding-after: 0 !important;
+  -webkit-padding-start: 0 !important;
+  -webkit-padding-end: 0 !important;
+}

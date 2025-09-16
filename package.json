@@ -1,0 +1,104 @@
+{
+  "author": "Gaurav Jain",
+  "name": "cye-uploader",
+  "version": "1.0.0",
+  "description": "CYE Uploader - A kid-friendly IDE",
+  "main": "./main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "react-start": "cd renderer && npm start",
+    "react-build": "cd renderer && npm run build",
+    "electron-dev": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
+    "dist": "npm run react-build && npx electron-builder",
+    "postinstall": "electron-builder install-app-deps",
+    "test-prod": "npm run react-build && electron . --no-dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win --x64",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.cye.uploader",
+    "productName": "CYE Uploader",
+    "copyright": "Copyright © 2023 CYE",
+    "files": [
+      "main/**/*",
+      "bin/**/*",
+      "renderer/build/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "bin",
+        "to": "bin",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "renderer/build",
+        "to": "renderer/build",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "assets",
+        "to": "assets",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "bin/CH341SER",
+        "to": "bin/CH341SER",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "bin/**/*"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets",
+      "app": "."
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.ico",
+      "artifactName": "CYE_Uploader_${version}.${ext}",
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico",
+      "artifactName": "CYE_Uploader_Setup_${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "CYE Uploader",
+      "deleteAppDataOnUninstall": true,
+      "include": "installer.nsh"
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2",
+    "wait-on": "^7.0.1"
+  },
+  "dependencies": {
+    "electron-first-run": "^3.0.0",
+    "serialport": "^11.0.0"
+  }
+}
