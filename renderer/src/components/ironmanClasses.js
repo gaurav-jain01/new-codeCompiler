@@ -170,7 +170,7 @@ void loop() {
     icon: "👁️",
     description: "Glowing eyes blinking like surveillance mode.",
     badges: ["⚡ Eyes LED (D7)"],
-    video: "https://youtu.be/wQGNp3x3vV4?feature=shared",
+    video: "https://www.youtube.com/watch?v=wQGNp3x3vV4&list=PLkd_KvLBTc_DMSIVZfrLTY4glrtIN52AZ&index=6",
     story: "Ironman Says: 'My eyes light up when I scan for danger! Watch them blink steadily.'",
     steps: [
       {
@@ -223,7 +223,7 @@ void loop() {
     icon: "🚀",
     description: "Boot jet lights turning on and off in sync.",
     badges: ["⚡ Flight LED (D3)"],
-    video: "https://youtu.be/9PS6PgWy_bo?feature=shared",
+    video: "https://www.youtube.com/watch?v=wQGNp3x3vV4&list=PLkd_KvLBTc_DMSIVZfrLTY4glrtIN52AZ&index=6",
     story: "Ironman Says: 'Time to take off! This light shows my flight system is activated.'",
     steps: [
       {
@@ -271,12 +271,12 @@ void loop() {
   },
   {
     classNum: 7,
-    title: "Eye Button Control",
-    moretitle: "Eye Button Control (Pins D7 & D8)",
+    title: "Eye blink + Arc Reactor",
+    moretitle: "Double Eye Blink With ARC Activation ( Pins D7 & D8)",
     icon: "🔘",
     description: "Both eyes blink alternately like Ironman's targeting ARC system activation.",
     badges: ["⚡ Eyes LED (D7)", "⚡ Arc Radiator LED 1 (D8)"],
-    video: "https://youtu.be/Ot3We_-vOLg?feature=shared",
+    video: "https://www.youtube.com/watch?v=Ot3We_-vOLg&list=PLkd_KvLBTc_DMSIVZfrLTY4glrtIN52AZ&index=8",
     story: "Ironman Says: \"Now both eyes blink one after the other! My scanning system is in full action with arc activation!\"",
     steps: [
       {
@@ -332,7 +332,7 @@ void loop() {
     icon: "🔫",
     description: "Both eyes flash like laser beams simultaneously.",
     badges: ["⚡ Laser (D4)", "⚡ Eyes LED (D7)"],
-    video: "https://youtu.be/deMPSB9jNdc?feature=shared",
+    video: "https://www.youtube.com/watch?v=deMPSB9jNdc&list=PLkd_KvLBTc_DMSIVZfrLTY4glrtIN52AZ&index=10",
     story: "Ironman Says: \"Time to fire twin laser beams! These eyes are fully loaded.\"",
     steps: [
       {
@@ -388,7 +388,7 @@ void loop() {
     icon: "🌈",
     description: "The RGB LED glows Red → Green → Blue, each color stays on for 1 second.",
     badges: ["⚡ RGB RED (D5)", "⚡ RGB GREEN (D6)", "⚡ RGB BLUE (D9)"],
-    video: "",
+    video: "https://www.youtube.com/watch?v=xPlJA65vXps&list=PLkd_KvLBTc_DMSIVZfrLTY4glrtIN52AZ&index=11",
     story: "Ironman Says: \"Watch my rainbow reactor change colors like magic!\"",
     steps: [
       {
@@ -464,12 +464,12 @@ void loop() {
   },
   {
     classNum: 10,
-    title: "Full Arc Alert",
-    moretitle: "Full Arc Alert (Pins D4, D5, D9, D7)",
+    title: "Full Alert Mode",
+    moretitle: "Rainbow + Chest Glow + Eye Alert (Pins D4, D5, D9, D7)",
     icon: "⚠️",
     description: "RGB flashes quickly like charging. Eyes blink slowly like a warning system.",
     badges: ["⚡ Red (D4)", "⚡ Green (D5)", "⚡ Blue (D9)", "⚡ Eyes (D7)"],
-    video: "",
+    video: "https://www.youtube.com/watch?v=bUoaed58VYc&list=PLkd_KvLBTc_DMSIVZfrLTY4glrtIN52AZ&index=12",
     story: "Ironman Says: \"Alert mode active – core stable!\"",
     steps: [
       {
@@ -577,11 +577,11 @@ void loop() {
   {
     classNum: 11,
     title: "Arc Reactor Light Show",
-    moretitle: "Arc Reactor Light Show (Pins D2, D8, D10, D11, D12, D13)",
+    moretitle: "Light Up All Arc LEDs (Pins D2, D8, D10, D11, D12, D13)",
     icon: "🎆",
     description: "All chest and body arc lights are ON, glowing together like full-power mode.",
     badges: ["⚡ Arc LEDs (D2, D8–D13)"],
-    video: "",
+    video: "https://www.youtube.com/watch?v=EtDsKlM2qUQ&list=PLkd_KvLBTc_DMSIVZfrLTY4glrtIN52AZ&index=13",
     story: "Ironman Says: \"All systems online — let’s light up the sky!\"",
     steps: [
       {
@@ -628,12 +628,12 @@ void loop() {
   },
   {
     classNum: 13,
-    title: "Ironman's Glowing Eyes",
-    moretitle: "Ironman's Glowing Eyes (Pin D7)",
+    title: "Eye control",
+    moretitle: "Ironman’s Eyes Control – Using Button",
     icon: "👀",
     description: "If the button is pressed, Ironman's eyes light up.",
     badges: ["⚡ Button (A0)", "⚡ Eyes LED (D7)"],
-    video: "",
+    video: "https://www.youtube.com/watch?v=YJHjdlqGp74&list=PLkd_KvLBTc_DMSIVZfrLTY4glrtIN52AZ&index=14",
     story: "Ironman says: “Press my secret chest button to activate my glowing eyes!”",
     steps: [
       {
@@ -685,8 +685,8 @@ void loop() {
   },
   {
     classNum: 14,
-    title: "Motion Detector Laser",
-    moretitle: "Motion Detector Laser",
+    title: "Laser control with motion",
+    moretitle: "IR Sensor Activates Laser on Hand",
     icon: "🔴",
     description: "The IR sensor detects movement. If someone waves their hand, Ironman’s laser diode (Pin 4) turns on.",
     badges: ["👁 IR Sensor (A6)", "🔴 Laser (D4)"],
@@ -754,8 +754,8 @@ void loop() {
   },
   {
     classNum: 15,
-    title: "Rainbow Chest Light",
-    moretitle: "Rainbow Chest Light",
+    title: "Rainbow Light control",
+    moretitle: "Button Controls RGB Chest LED",
     icon: "🌈",
     description: "The RGB LED (Pin 9) lights up when Button 1 (Pin A1) is pressed.",
     badges: ["🟢 Button (A1)", "🌈 RGB LED (D9)"],
@@ -811,8 +811,8 @@ void loop() {
   },
   {
     classNum: 16,
-    title: "Hand Laser Blaster",
-    moretitle: "Hand Laser Blaster (Triggered by Button)",
+    title: "Hand Laser Blaster control",
+    moretitle: "Ironman Laser Blaster (Triggered by Button)",
     icon: "⚡",
     description: "When you press the button, it tells the laser to turn on. When you let go, the laser turns off.",
     badges: ["⚡ Button (A0)", "🔴 Laser (D4)"],
@@ -868,7 +868,7 @@ void loop() {
   {
     classNum: 17,
     title: "Flying Mode Detector",
-    moretitle: "Flying Mode Detector with IR",
+    moretitle: "Footstep Detector with IR",
     icon: "🚀",
     description: "When someone walks nearby, the IR sensor triggers the lights on Ironman’s hands and legs.",
     badges: ["👁 IR Sensor (A6)", "🔥 Boosters (D3)"],
@@ -929,8 +929,8 @@ void loop() {
   },
   {
     classNum: 19,
-    title: "Footstep Detector with IR",
-    moretitle: "Footstep Detector (IR Sensor + Legs LED)",
+    title: "Motion + ARC +Footstep",
+    moretitle: "Motion-Based Flying Lights (Semi ARC+  Flying LED)",
     icon: "🦶",
     description: "When someone walks nearby, the IR sensor triggers the lights on Ironman's hands, legs and semi arc.",
     badges: ["👁 IR Sensor (A6)", "🔥 Flying LED (D3)", "🌟 Semi Arc (D13/D11/D2)"],
@@ -1000,7 +1000,7 @@ void loop() {
   {
     classNum: 20,
     title: "IR Sensor Activation – Blast Mode",
-    moretitle: "IR Sensor Activation – Blast Mode",
+    moretitle: "Eyes + Laser + Arc When Enemy Detected",
     icon: "💥",
     description: "When something comes too close, Ironman powers up! He fires his laser, lights up his eyes, and makes his arc reactor glow bright.",
     badges: ["👁 IR Sensor (A6)", "🔴 Laser (D4)", "👀 Eyes (D7)", "🌈 RGB Chest (D6)"],
@@ -1065,7 +1065,7 @@ void loop() {
   {
     classNum: 21,
     title: "Dual Button = Dual Mode Control",
-    moretitle: "Dual Button = Dual Mode Control",
+    moretitle: "Fly Mode (A0) + Laser Attack (A1)",
     icon: "🎮",
     description: "Button A0 turns on the eyes and jet LEDs, while Button A1 controls the laser.",
     badges: ["🔘 Button A0", "🔘 Button A1", "🔥 Laser (D4)", "🛫 Flying LED (D3)", "👀 Eyes (D7)"],
@@ -1143,7 +1143,7 @@ void loop() {
   {
     classNum: 22,
     title: "Distance Comparator IR Laser",
-    moretitle: "Distance Comparator IR Laser",
+    moretitle: "Eyes & Laser Activate on Close Object",
     icon: "🔍",
     description: "Ironman is standing tall.👁 IR sensor on his chest is scanning...Laser in his palm and 🌟 glowing eyes turn ON when something gets close!",
     badges: ["👁 IR Sensor (A6)", "🔴 Laser (D4)", "👀 Eyes (D7)"],
@@ -1205,7 +1205,7 @@ void loop() {
   {
     classNum: 23,
     title: "Danger Alert – Combo Triggered",
-    moretitle: "Danger Alert – Combo Triggered",
+    moretitle: "Button AND Safe Distance = All LEDs Fire",
     icon: "🚨",
     description: "•	A button on Ironman’s hand is pressed (A0),His invisible chest sensor (A6) sees no one there, BOOM! 🌈 RGB chest glows, 💥 laser shoots, 👁️ eyes light up! If not, everything stays OFF — Ironman is saving energy!",
     badges: ["🔘 Button A0", "👁 IR Sensor A6", "🌈 RGB Chest (D6)", "🔴 Laser (D4)", "👀 Eyes (D7)"],
@@ -1271,8 +1271,8 @@ void loop() {
   },
   {
     classNum: 25,
-    title: "Motion Sensor Rainbow Light",
-    moretitle: "Motion Sensor Rainbow Light",
+    title: "Chest Arc LED 5 times",
+    moretitle: "Ironman's Chest Arc - One LED Flashing 5 times (Pin D8)",
     icon: "🌈",
     description: "Ironman's Arc Reactor (D8) flashes 5 times like it's charging up!",
     badges: ["⚡ IR Sensor (A6)", "⚡ RGB LED (D6)"],
@@ -1328,8 +1328,8 @@ void loop() {
   },
   {
     classNum: 26,
-    title: "Dual Button Control",
-    moretitle: "Dual Button Control",
+    title: "Rocket Blast Quick 3 times",
+    moretitle: "Ironman’s Rocket Blast  Quick 3 times - Flying LEDs (Pin D3)",
     icon: "🔘",
     description: "Ironman’s flying effect LEDs (D3) blink rapidly like rocket boosters powering up!",
     badges: ["⚡ Button (A0)", "⚡ Button (A1)", "⚡ LEDs (D7, D3)"],
@@ -1385,8 +1385,8 @@ void loop() {
   },
   {
     classNum: 27,
-    title: "Light Show with Delay Variation",
-    moretitle: "Light Show with Delay Variation",
+    title: "Hand Laser Flash 3 times",
+    moretitle: "Ironman’s Laser Blast - Hand Laser Flash 3 times (Pin D4)",
     icon: "⏳",
     description: "Ironman’s laser diode on hand (D4) flashes in a zap-zap pattern like a real laser gun.",
     badges: ["⚡ Laser Diode (D4)"],
@@ -1442,8 +1442,8 @@ void loop() {
   },
   {
     classNum: 28,
-    title: "Ironman's Glowing Eyes - Blink Like a Bot",
-    moretitle: "Ironman's Glowing Eyes - Blink Like a Bot",
+    title: "Eye Blinking Sequence",
+    moretitle: "Eye LED Blinking Sequence with Rest mode (Pin D7) ",
     icon: "🤖",
     description: "Ironman’s eye LEDs (D7) blink slowly like he’s scanning the battlefield.",
     badges: ["⚡ Eyes LED (D7)"],
@@ -1499,8 +1499,8 @@ void loop() {
   },
   {
     classNum: 29,
-    title: "Ironman's Rainbow Reactor - RGB Color Pulse",
-    moretitle: "Ironman's Rainbow Reactor - RGB Color Pulse (Pin D9)",
+    title: "Loop Rainbow Reactor",
+    moretitle: "Ironman's Rainbow Reactor - Color Pulse with Loop and Rest (Pin D9)",
     icon: "🌈",
     description: "The RGB LED in the arc reactor (Pin D9) glows in a pulsing pattern — like energy flowing inside his chest.",
     badges: ["⚡ RGB LED (D9)"],
