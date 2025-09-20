@@ -5,18 +5,11 @@ const useAppData = () => {
   const [ports, setPorts] = useState([]);
   const [selectedPort, setSelectedPort] = useState('');
   const [code, setCode] = useState(`void setup() {
-  // Initialize serial communication at 9600 bits per second:
-  Serial.begin(9600);
-  // Initialize the LED_BUILTIN pin as an output
-  pinMode(LED_BUILTIN, OUTPUT);
+    
 }
 
 void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);   // Turn the LED on
-  delay(1000);                       // Wait for a second
-  digitalWrite(LED_BUILTIN, LOW);    // Turn the LED off
-  delay(1000);                       // Wait for a second
-  Serial.println("Blink!");         // Print to serial monitor
+
 }`);
   const [outputLines, setOutputLines] = useState([
     // { id: 1, message: 'CYE Uploader Terminal v1.0.0', type: 'header' },

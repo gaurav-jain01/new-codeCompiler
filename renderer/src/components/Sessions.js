@@ -260,7 +260,7 @@ export default function Sessions({ onGoToCompiler }) {
         style={{ backgroundColor: 'var(--bg-main)', color: 'var(--text-main)' }}
       >
         {/* Logo + Name */}
-        <div className="flex flex-col items-center md:flex-row md:items-center md:space-x-2">
+        <div className="flex flex-col items-center md:flex-row md:items-center">
           <img
             src={process.env.PUBLIC_URL + '/logo.png'}
             alt="Logo"
@@ -626,7 +626,7 @@ export default function Sessions({ onGoToCompiler }) {
                                     {step.commentary && (
                                       <div className="flex items-start gap-2">
                                         <span className="text-blue-500 flex-shrink-0">➤</span>
-                                        <span className="italic text-blue-600 break-words">{step.commentary}</span>
+                                        <span className="italic text-main break-words">{step.commentary}</span>
                                       </div>
                                     )}
                                   </div>
